@@ -5,16 +5,33 @@ app = Flask(__name__)
 @app.route('/')
 def index():
     if 'username' in session:
-        return render_template('index.html')
-    'Logged in as %s' % escape(session['username'])
-    return render_template('index.html')
+        return 'Logged in as %s' % escape(session['username'])
+    else:
+        return redirect('login')
+        # render_template('index.html')
+        
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     if request.method == 'POST':
-        session['username'] = request.form['username']
-        return redirect(url_for('index'))
-    return render_template('index.html')
+        session['username'] = request.form.get('title')
+        object = open("user.txt", 'w')
+        
+        title = request.form.get('title')  # 传入表单对应输入字段的 name 值
+        year = request.form.get('year')
+        print(title, year)
+
+
+        object.write(title)
+        object.write(" ")
+        object.write(year)
+        object.write("\n")
+
+
+
+        object.close()
+        return 'Logged in as %s' % escape(session['username'])
+    return render_template('login.html')
     #'''
     #    <form action="" method="post">
     #        <p><input type=text name=username>
