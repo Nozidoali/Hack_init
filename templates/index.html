@@ -7,7 +7,7 @@
   
   
   
-      <link rel="stylesheet" href="./style.css">
+      <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 
   
 </head>
@@ -19,9 +19,7 @@
 <head>
  <meta charset="UTF-8">
  <title>欢迎你，请先登陆！</title>
- <script type="text/javascript" src="../static/jsp/lx.js"></script>
  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
- <link rel="stylesheet" href="../static/css/lx.css">
  
 </head>
 <body>
@@ -48,7 +46,7 @@
   
   
 
-    <script  src="./script.js"></script>
+    <script  src="{{ url_for('static', filename='script.js') }}"></script>
 
 
 
